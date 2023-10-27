@@ -1,6 +1,6 @@
 With
 	stg01 AS (
-	select * from `cloudside-academy.dbt_sample_data.annual-enterprise-survey02`)
+	select * from `cloudside-academy.dbt_sample_data.annual-enterprise-survey02`),
 	one AS
 	(
 	select 
