@@ -10,4 +10,4 @@ With
 	serial_number ,serial_number_1 
 	from stg01
 	)
-	select * form one
+	select * from one
