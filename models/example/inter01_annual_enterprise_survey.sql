@@ -3,12 +3,12 @@ with
 
 	inter01 as (
 	SELECT
-        {{ dbt_utils.star(from=ref(`stg_annual_enterprise_survey_01`)) }},
-        {{ dbt_utils.star(from=ref(`stg_annual_enterprise_survey_02`)) }}
+        {{ dbt_utils.star(from=ref('stg_annual_enterprise_survey_01')) }},
+        {{ dbt_utils.star(from=ref('stg_annual_enterprise_survey_02')) }}
         FROM
-        {{ ref(`stg_annual_enterprise_survey_01`) }} AS t1
+        {{ ref('stg_annual_enterprise_survey_01') }} AS t1
 	LEFT JOIN
-        {{ ref(`stg_annual_enterprise_survey_02`) }} AS t2
+        {{ ref('stg_annual_enterprise_survey_02') }} AS t2
 	ON
         t1.id = t2.id
         WHERE
