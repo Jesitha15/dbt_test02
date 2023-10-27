@@ -3,18 +3,18 @@ with
 
 	inter01 as (
 	SELECT
-        {{ dbt_utils.star(from=ref('stg_annual_enterprise_survey_01')) }},
-        {{ dbt_utils.star(from=ref('stg_annual_enterprise_survey_02')) }}
+        {{ dbt_utils.star(from=ref(`stg_annual_enterprise_survey_01`)) }},
+        {{ dbt_utils.star(from=ref(`stg_annual_enterprise_survey_02`)) }}
         FROM
-        {{ ref('stg_annual_enterprise_survey_01') }} AS t1
-	LEFT JOIN
-        {{ ref('stg_annual_enterprise_survey_02') }} AS t2
+        {{ ref(`stg_annual_enterprise_survey_02`) }} AS t1
+	JOIN
+        {{ ref(`stg_annual_enterprise_survey_01`) }} AS t2
 	ON
         t1.id = t2.id
         WHERE
 	t1.year = 2013
 	GROUP BY
-	t1.id,
+	table1_id,
 	t1.year, 
 	t2.Year, 
 	t1.industry_code_ANZSIC, 
@@ -26,7 +26,7 @@ with
 	t1.unit,
 	t1.serial_number,
 	t1.serial_number_1,
-	t2.id,
+	table2_id,
 	t2.Industry_aggregation_NZSIOC,
 	t2.Industry_name_NZSIOC,
 	t2.Units,
